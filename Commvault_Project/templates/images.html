@@ -1,1 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Images</title>
+</head>
+<body>
+    <h2>List of Images in the S3 Bucket</h2>
 
+    <form action="/images" method="GET">
+        <label>
+            <input type="checkbox" name="filter_encrypted">
+            Show only encrypted images
+        </label>
+        <input type="submit" value="Filter">
+    </form>
+
+    <ul>
+        {% for image in images %}
+        <li>
+            {{ image }} - <a href="/download/{{ image }}">Download</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
